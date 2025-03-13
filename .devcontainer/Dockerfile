@@ -1,14 +1,13 @@
-# Use the official Python image as the base
 FROM python:3.11-slim
 
-# Install Docker CLI
-RUN apt-get update && apt-get install -y docker.io && rm -rf /var/lib/apt/lists/*
+# Install Docker CLI only (not the daemon)
+RUN apt-get update && apt-get install -y docker-cli && rm -rf /var/lib/apt/lists/*
 
-# Set the working directory
+# Set working directory
 WORKDIR /app
 
-# Ensure Python and Docker are installed
+# Ensure Python and Docker CLI are installed
 RUN python --version && docker --version
 
-# Default command: Start a shell
+# Default command
 CMD ["/bin/sh"]
