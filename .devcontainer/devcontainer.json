@@ -9,7 +9,7 @@
     }
   },
 
-  "postCreateCommand": "pip install -r requirements.txt",
+  "postCreateCommand": "pip install -r requirements.txt && wget -q https://raw.githubusercontent.com/dapr/cli/master/install/install.sh -O - | /bin/bash && dapr init",
   
   "customizations": {
     "vscode": {
