@@ -1,7 +1,14 @@
-FROM mcr.microsoft.com/devcontainers/python:3.12
+# Use the official Python image as the base
+FROM python:3.11-slim
 
-# Install any additional dependencies here
-# RUN apt-get update && apt-get install -y <package-name>
+# Install Docker CLI
+RUN apt-get update && apt-get install -y docker.io && rm -rf /var/lib/apt/lists/*
 
-# Switch back to dialog for any ad-hoc use of apt-get
-ENV DEBIAN_FRONTEND=dialog
+# Set the working directory
+WORKDIR /app
+
+# Ensure Python and Docker are installed
+RUN python --version && docker --version
+
+# Default command: Start a shell
+CMD ["/bin/sh"]
